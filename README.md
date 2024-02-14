@@ -5,26 +5,13 @@ Run Via Docker Compose in single command
 
 `docker compose up --build -d`
 
-OR build/run via individual commands
+You can use [LDAP Admin](https://sourceforge.net/projects/ldapadmin/) to browse and modify the controller.
+Or you can use [`samba-tool`](https://www.samba.org/samba/docs/current/man-html/samba-tool.8.html) as a CLI administration tool.
 
-Build Docker image : 
-`docker build -t ldap-ad -f Dockerfile .`
-
-Run the Active Directory Container 
-`docker run --name ldap-ad --hostname ldap.example.org --privileged -p 636:636 -e AD_DOMAIN=DEV-AD -e SMB_ADMIN_PASSWORD=admin123! ldap-ad`
-
-You can use Apache Directory Studio to explore. https://directory.apache.org/studio/
-
-Connect to localhost on port 686
-
-USERNAME : DEV-AD\Administrator
-
-Password : admin123!
-
-![Alt text](img/image.png)
-
-![Alt text](img/image-1.png)
-
-![Alt text](img/image-2.png)
+* Port: 389
+* TLS is disabled
+* USERNAME: `STTX-LOCAL\Administrator`
+* Password: `admin123!`
+* Distinguished Name: `DC=sttx,DC=local`
 
 Reference : This is based following Article, I have made some refinements : https://schneide.blog/2022/06/27/running-a-containerized-activedirectory-for-developers/

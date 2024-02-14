@@ -1,16 +1,16 @@
 version: "3.4"
 services:
-  ldap.example.org:
+  ldap:
     restart: always
-    hostname: "ldap.example.org"
+    hostname: dev.sttx.local
     build:
       context: .
       dockerfile: Dockerfile  
     privileged: true
     expose:
-      - "636"
+      - "389"
     ports:
-      - "636:636"      
+      - "389:389"
     environment:
-      SMB_ADMIN_PASSWORD: "admin123!"
-      AD_DOMAIN: "DEV-AD"
+      SMB_ADMIN_PASSWORD: admin123!
+      AD_DOMAIN: STTX-LOCAL

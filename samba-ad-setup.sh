@@ -26,6 +26,9 @@ samba-tool domain provision\
  --domain=${AD_DOMAIN}\
  --adminpass=${SMB_ADMIN_PASSWORD}
  
-mv /etc/samba/smb.conf /var/lib/samba/private/smb.conf
- 
+# mv /etc/samba/smb.conf /var/lib/samba/private/smb.conf
+
+# this disables TLS and instead exposes LDAP on port 389
+sed '/\[global\]/ a\ \ \ \ \ \ \ \ ldap server require strong auth = no' < /etc/samba/smb.conf >> /var/lib/samba/private/smb.conf
+
 touch /var/lib/samba/.setup
